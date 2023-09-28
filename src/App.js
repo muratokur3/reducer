@@ -1,11 +1,11 @@
-import TodoReducer from "./TodoReducer";
+import Todos from "./Todos";
 
 function App() {
   return (
    
     <>
 
-    <TodoReducer/>
+    <Todos/>
     
     </>
   );
