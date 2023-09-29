@@ -65,21 +65,21 @@ const Todos = () => {
   };
   console.log(comment);
   return (
-    <>
+    <div className="container">
       <>
         <input
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
           type="text"
         ></input>
-        <button onClick={addToDo}> Add Todo </button>
+        <button className="addButton" onClick={addToDo}> Add Todo </button>
         <hr />
         Todo
-        <ul>
+        <ul className="todo">
           {todos.map(
             (todo, index) =>
               todo.completed === false && (
-                <div key={index}>
+                <div  key={index}>
                   <li>
                     <input
                       type="checkbox"
@@ -98,7 +98,7 @@ const Todos = () => {
                   >
                     comment detail
                   </button>
-                  <button>Edit Todo</button>
+                 
                   <button onClick={() => deleteTodo(todo.id)}>
                     Delete Todo
                   </button>
@@ -106,13 +106,15 @@ const Todos = () => {
               )
           )}
         </ul>
-        <hr />
+        
         Completed
-        <ul>
-          {todos.map(
+        {todos.map(
             (todo, index) =>
+   
+        
               todo.completed === true && (
-                <div key={index}>
+                <ul className="todo">
+                <div  key={index}>
                   <li>
                     <input
                       type="checkbox"
@@ -131,18 +133,27 @@ const Todos = () => {
                   >
                     comment detail
                   </button>
-                  <button>Edit Todo</button>
+                 
                   <button onClick={() => deleteTodo(todo.id)}>
                     Delete Todo
                   </button>
                 </div>
+                </ul>
               )
+        
+       
           )}
-        </ul>
       </>
-      <div>
+      <hr/>
+      < >
         {commentLis.opened && (
-          <ul>
+          <ul className="comment-detailist">
+            {todos.map(
+              (todo, index) =>
+                todo.id === commentLis.toDoId && (
+                  <h2 key={index}>{todo.text}</h2>
+                )
+            )}
             <input
               onChange={(e) => setCommentInput(e.target.value)}
               type="text"
@@ -164,12 +175,7 @@ const Todos = () => {
             >
               Add Comment
             </button>
-            {todos.map(
-              (todo, index) =>
-                todo.id === commentLis.toDoId && (
-                  <h2 key={index}>{todo.text}</h2>
-                )
-            )}
+            
 
             {commentLis.opened &&
               comment.map((com, index) => {
@@ -184,7 +190,7 @@ const Todos = () => {
                         />
                         {com.text}
                       </li>
-                      <button>Edit Comment</button>
+                     
                       <button onClick={() => deleteComment(com.id)}>
                         Delete Comment
                       </button>
@@ -195,14 +201,16 @@ const Todos = () => {
               })}
           </ul>
         )}
-        <hr />
+      
         {commentLis.opened && (
-          <ul>
+          <ul className="comment-detailist">
             {commentLis.opened &&
               comment.map((com, index) => {
                 if (com.to === commentLis.toDoId && com.completed === true) {
                   return (
+
                     <div>
+                      
                       <li key={index}>
                         <input
                           onChange={() => checkComment(com.id)}
@@ -211,10 +219,11 @@ const Todos = () => {
                         />
                         {com.text}
                       </li>
-                      <button>Edit Comment</button>
+                      
                       <button onClick={() => deleteComment(com.id)}>
                         Delete Comment
                       </button>
+
                     </div>
                   );
                 }
@@ -222,8 +231,8 @@ const Todos = () => {
               })}
           </ul>
         )}
-      </div>
-    </>
+      </>
+    </div>
   );
 };
 

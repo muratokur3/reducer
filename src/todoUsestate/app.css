@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.container{
+ 
+    background-color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.addButton{
+    width: 30vw;
+
+}
+input[type="text"]{
+    padding: 7px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 30vw;
+}
+input[type="checkbox"]{
+   
+    margin-right: 8px;
+    
+}
+hr{
+    border: 1px solid black;
+    width: 100vw;
+}
+
+button{
+    
+    background-color: cadetblue;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    margin-right: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+li{
+    display: flex;
+    align-items: center;
+    margin: 8px;
+    
+}
+.comment-detailist h2{
+    font-size: 20px;
+
+}
+.comment-detailist{
+    border: 1px solid black;
+    width: 50vw;
+    padding: 25px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+}
+
+
+.todo{
+    border: 1px solid black;
+    width: 50vw;
+    padding: 25px;
+    background-color: antiquewhite;
+    border-radius: 20px;
+}
+
