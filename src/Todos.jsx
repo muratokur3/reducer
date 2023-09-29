@@ -2,17 +2,22 @@ import React, { useState } from "react";
 
 const Todos = () => {
   const [todos, setTodos] = useState([
-    { id: 1, text: "kod yaz", completed: false },
-    { id: 2, text: "kahve iç", completed: false },
-    { id: 3, text: "kahvaltı yap", completed: true },
+    { id: 1, text: "daha çok kod yaz", completed: false },
+    { id: 2, text: "kod yaz", completed: false },
+    { id: 3, text: "kahve iç", completed: false },
+    { id: 4, text: "kahvaltı yap", completed: false },
   ]);
+  
   const [todo, setTodo] = useState("");
 
   const [comment, setComment] = useState([
-    { to: 2, id: 1, text: "com1", completed: false },
-    { to: 1, id: 2, text: "com2", completed: false },
-    { to: 1, id: 3, text: "com3", completed: false },
-    { to: 2, id: 4, text: "com1", completed: false },
+    { to: 1, id: 1, text: "ara vermeden devamke", completed: false },
+    { to: 2, id: 2, text: "hemen klavyeye sarıl durmadan kodla", completed: false },
+    { to: 2, id: 3, text: "vs code aç", completed: false },
+    { to: 3, id: 4, text: "Güzel demlemen yeterli", completed: false },
+    { to: 4, id: 5, text: "Afiyet olsun", completed: false },
+    { to: 4, id: 6, text: "Kahvaltıyı masaya diz", completed: false },
+    { to: 4, id: 7, text: "Çay demle", completed: false },
   ]);
   const [commentInput, setCommentInput] = useState("");
   // const [commentInput, setCommentInput] = useState("");
@@ -74,13 +79,15 @@ const Todos = () => {
           {todos.map(
             (todo, index) =>
               todo.completed === false && (
-                <li key={index}>
-                  <input
-                    type="checkbox"
-                    onChange={() => checkTodo(todo.id)}
-                    checked={todo.completed}
-                  />
-                  {todo.text}
+                <div key={index}>
+                  <li>
+                    <input
+                      type="checkbox"
+                      onChange={() => checkTodo(todo.id)}
+                      checked={todo.completed}
+                    />
+                    {todo.text}
+                  </li>
                   <button
                     onClick={() =>
                       setCommentList({
@@ -91,8 +98,11 @@ const Todos = () => {
                   >
                     comment detail
                   </button>
-                  <button onClick={() => deleteTodo(todo.id)}>sil</button>
-                </li>
+                  <button>Edit Todo</button>
+                  <button onClick={() => deleteTodo(todo.id)}>
+                    Delete Todo
+                  </button>
+                </div>
               )
           )}
         </ul>
@@ -102,20 +112,35 @@ const Todos = () => {
           {todos.map(
             (todo, index) =>
               todo.completed === true && (
-                <li key={index}>
-                  <input
-                    type="checkbox"
-                    onChange={() => checkTodo(todo.id)}
-                    checked={todo.completed}
-                  />
-                  {todo.text}
-                  <button onClick={() => deleteTodo(todo.id)}>sil</button>
-                </li>
+                <div key={index}>
+                  <li>
+                    <input
+                      type="checkbox"
+                      onChange={() => checkTodo(todo.id)}
+                      checked={todo.completed}
+                    />
+                    {todo.text}
+                  </li>
+                  <button
+                    onClick={() =>
+                      setCommentList({
+                        opened: !commentLis.opened,
+                        toDoId: todo.id,
+                      })
+                    }
+                  >
+                    comment detail
+                  </button>
+                  <button>Edit Todo</button>
+                  <button onClick={() => deleteTodo(todo.id)}>
+                    Delete Todo
+                  </button>
+                </div>
               )
           )}
         </ul>
       </>
-      <div style={{ background: "pink", width: "100%" }}>
+      <div>
         {commentLis.opened && (
           <ul>
             <input
@@ -123,7 +148,8 @@ const Todos = () => {
               type="text"
             ></input>
             <button
-              onClick={() =>{setCommentInput("")
+              onClick={() => {
+                
                 setComment([
                   ...comment,
                   {
@@ -132,8 +158,9 @@ const Todos = () => {
                     text: commentInput,
                     completed: false,
                   },
-                ])}
-              }
+                ]);
+                setCommentInput("");
+              }}
             >
               Add Comment
             </button>
@@ -148,15 +175,20 @@ const Todos = () => {
               comment.map((com, index) => {
                 if (com.to === commentLis.toDoId && com.completed === false) {
                   return (
-                    <li key={index}>
-                      <input
-                        onChange={() => checkComment(com.id)}
-                        value={commentInput}
-                        type="checkbox"
-                      />
-                    {com.text}
-                      <button onClick={() => deleteComment(com.id)}>sil</button>
-                    </li>
+                    <div>
+                      <li key={index}>
+                        <input
+                          onChange={() => checkComment(com.id)}
+                          checked={com.completed}
+                          type="checkbox"
+                        />
+                        {com.text}
+                      </li>
+                      <button>Edit Comment</button>
+                      <button onClick={() => deleteComment(com.id)}>
+                        Delete Comment
+                      </button>
+                    </div>
                   );
                 }
                 return null;
@@ -166,20 +198,24 @@ const Todos = () => {
         <hr />
         {commentLis.opened && (
           <ul>
-           
             {commentLis.opened &&
               comment.map((com, index) => {
                 if (com.to === commentLis.toDoId && com.completed === true) {
                   return (
-                    <li key={index}>
-                      <input
-                        onChange={() => checkComment(com.id)}
-                        checked={com.completed}
-                        type="checkbox"
-                      />
-                      {com.text}
-                      <button onClick={() => deleteComment(com.id)}>sil</button>
-                    </li>
+                    <div>
+                      <li key={index}>
+                        <input
+                          onChange={() => checkComment(com.id)}
+                          checked={com.completed}
+                          type="checkbox"
+                        />
+                        {com.text}
+                      </li>
+                      <button>Edit Comment</button>
+                      <button onClick={() => deleteComment(com.id)}>
+                        Delete Comment
+                      </button>
+                    </div>
                   );
                 }
                 return null;
