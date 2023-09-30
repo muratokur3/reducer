@@ -1,12 +1,8 @@
-import "./todoUsestate/app.css"
-import TodoReducer from "./todousereducer/TodoReducer";
-
+import Todos from './Todos';
+import './app.scss'
 function App() {
   return (
-    
-    <TodoReducer/>
-    
+    <Todos/>
   );
 }
-
 export default App;

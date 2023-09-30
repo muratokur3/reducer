@@ -36,6 +36,11 @@ const reducer=(state,action)=>{
            details: state.details.map(detail=> detail.id===action.payload?{...detail,completed:!detail.completed}:detail
            )
         }
+        case "ACTİVE_TODO":
+            return{
+                ...state,
+                activeTodo:{todoId:action.payload.id,activeTodoText:action.payload.text,isActive:!state.activeTodo.isActive}
+            }
         default:
             return state;
     }

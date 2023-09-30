@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Detail = ({details,dispatch}) => {
+const Detail = ({state,dispatch}) => {
+    const details=state.details.filter((detail)=>detail.todoId===state.activeTodo.todoId);
+    const activeTodo=state.activeTodo;
     return (
       <>
+      <br/>
+            <button onClick={()=>dispatch({type:"ACTİVE_TODO",payload:{id:0,text:""}})}>close</button>
+      <br/>
+      <h2>{activeTodo.activeTodoText}</h2>
       <ul style={{display:"flex",flexDirection:"column-reverse"}}>
           {details.map((detail, index) => (
            detail.completed===false&& <li key={index}>
@@ -12,7 +18,7 @@ const Detail = ({details,dispatch}) => {
           ))}
           
         </ul>
-        <ul style={{display:"flex",flexDirection:"column-reverse"}}>
+       <ul style={{display:"flex",flexDirection:"column-reverse"}}>
           {details.map((detail, index) => (
            detail.completed===true&& <li key={index}>
               <input onChange={()=>dispatch({type:"DETAIL_CHECK",payload:detail.id})} type='checkbox' checked={detail.completed}/> {detail.text}{" "}

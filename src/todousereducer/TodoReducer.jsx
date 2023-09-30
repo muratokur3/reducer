@@ -4,15 +4,17 @@ import initialState from "./InitialState";
 import TodoListing from "./TodoListing";
 import AddTodo from "./AddTodo";
 import Detail from "./Detail";
+import './style.scss'
 
 const TodoReducer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div style={{width:"100%", display:"flex",flexDirection:"column",alignItems:"center"}}>
+    <div id="container">
      <AddTodo  state={state} dispatch={dispatch}/>
       <TodoListing todos={state.todos} dispatch={dispatch}/>
       <hr/>
-      <Detail details={state.details} dispatch={dispatch}/>
+      
+     {state.activeTodo.isActive===true&&<Detail state={state} dispatch={dispatch} />} 
     </div>
   );
 };
