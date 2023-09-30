@@ -1,14 +1,11 @@
-import Todos from "./todoUsestate/Todos";
 import "./todoUsestate/app.css"
+import TodoReducer from "./todousereducer/TodoReducer";
 
 function App() {
   return (
-   
-    <>
-
-    <Todos/>
     
-    </>
+    <TodoReducer/>
+    
   );
 }
 
