@@ -12,6 +12,17 @@ const reducer=(state,action)=>{
             ...state,
             newTodo : action.payload 
          } 
+         case"UBDATE_CHANGE":
+        return {
+            ...state,
+            ubdateTodo : action.payload 
+         } 
+         case"UBDATE_TODO":
+             return {
+            ...state,
+           todos :  state.todos.map(todo=>todo.id===action.payload.id?{...todo,text:action.payload.text}:todo),
+           ubdateTodo:""
+        } 
         case"DELETE_TODO":
         const ubdateTodos=state.todos.filter((todo)=>todo.id!==action.payload);
         return {
@@ -24,11 +35,21 @@ const reducer=(state,action)=>{
            todos: state.todos.map(todo=> todo.id===action.payload?{...todo,completed:!todo.completed}:todo
            )
         }
-        case"DELETE_DETAIL":
-        const ubdateDetails=state.details.filter((detail)=>detail.id!==action.payload);
+        case"ADD_DETAİL":
+             return {
+            ...state,
+           details : [...state.details, {id:Date.now(),todoId:action.payload.todoId,text: action.payload.text,completed:false} ],
+           newDetail:""
+        } 
+        case"CHANGE_DETAİL":
         return {
             ...state,
-           detail: ubdateDetails
+            newDetail : action.payload 
+         } 
+        case"DELETE_DETAIL":
+        return {
+            ...state,
+           details: state.details.filter((detail)=>detail.id!==action.payload)
         }
         case"DETAIL_CHECK":
         return {

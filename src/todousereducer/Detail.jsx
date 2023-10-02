@@ -1,4 +1,5 @@
 import React from 'react'
+import AddDetail from './AddDetail';
 
 const Detail = ({state,dispatch}) => {
     const details=state.details.filter((detail)=>detail.todoId===state.activeTodo.todoId);
@@ -9,6 +10,7 @@ const Detail = ({state,dispatch}) => {
             <button onClick={()=>dispatch({type:"ACTİVE_TODO",payload:{id:0,text:""}})}>close</button>
       <br/>
       <h2>{activeTodo.activeTodoText}</h2>
+      <AddDetail state={state} dispatch={dispatch}/>
       <ul style={{display:"flex",flexDirection:"column-reverse"}}>
           {details.map((detail, index) => (
            detail.completed===false&& <li key={index}>
@@ -18,6 +20,7 @@ const Detail = ({state,dispatch}) => {
           ))}
           
         </ul>
+        <hr/>
        <ul style={{display:"flex",flexDirection:"column-reverse"}}>
           {details.map((detail, index) => (
            detail.completed===true&& <li key={index}>

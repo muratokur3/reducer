@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 
-const TodoReducer = () => {
+const TodoReducerfirst = () => {
     
     const initialState={
         todos:[
@@ -54,4 +54,4 @@ const TodoReducer = () => {
   )
 }
 
-export default TodoReducer
+export default TodoReducerfirst

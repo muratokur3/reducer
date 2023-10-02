@@ -11,10 +11,10 @@ const TodoReducer = () => {
   return (
     <div id="container">
      <AddTodo  state={state} dispatch={dispatch}/>
-      <TodoListing todos={state.todos} dispatch={dispatch}/>
+      <TodoListing state={state} todos={state.todos} dispatch={dispatch}/>
       <hr/>
-      
-     {state.activeTodo.isActive===true&&<Detail state={state} dispatch={dispatch} />} 
+     {state.activeTodo.isActive===true&&
+     <Detail state={state} dispatch={dispatch} />} 
     </div>
   );
 };
