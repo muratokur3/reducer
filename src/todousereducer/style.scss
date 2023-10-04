@@ -1,22 +1,41 @@
-#container{
-    width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(to top,gray,white);
+#container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to top, gray, white);
 }
-#todo-listing{
-    input[type="text"]{
-        background:none;
-        border: none;
-        margin-left: 10px;
-        margin-right: 10px;
-        font-size: 1rem;
-        cursor: pointer;
-        &::placeholder {
-            color: black; 
-        }
-        &:focus{
-            background-color: aliceblue;
-            border-radius: 10px;
-        }
+#todo-listing {
+  input[type="text"] {
+    background: none;
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    &::placeholder {
+      color: black;
     }
+    &:focus {
+      background-color: aliceblue;
+      border-radius: 10px;
+    }
+  }
+}
+#detail-container {
+  ul {
+    input[type="text"] {
+      background: none;
+      border: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      &::placeholder {
+        color: black;
+      }
+      &:focus {
+        background-color: aliceblue;
+        border-radius: 10px;
+      }
+    }
+  }
 }
