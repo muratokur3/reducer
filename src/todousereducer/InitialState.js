@@ -1,9 +1,12 @@
+import axios from 'axios';
+
+const getTodos= async()=>{
+  const response=await axios.get("http://localhost:5005/todos")
+    return response.data
+  }
+
 const initialState = {
-  todos: [
-    { id: 1, text: "Kahvaltı yap", completed: false },
-    { id: 2, text: "Spor Yap", completed: true },
-    { id: 3, text: "Projeyi tamamla", completed: true },
-  ],
+  todos: getTodos,
   newTodo: "",
   ubdateTodo:"",
   details: [
@@ -24,4 +27,15 @@ const initialState = {
     isActive: false,
   },
 };
+
+
+  
+
+
+
+
+
+
+
+
 export default initialState;
