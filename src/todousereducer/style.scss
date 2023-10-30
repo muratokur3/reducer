@@ -2,7 +2,25 @@
   width: 100%;
   min-height: 100vh;
   background: linear-gradient(to top, gray, white);
+  display: flex;
+  flex-direction: row;
 }
+
+#folders-container{
+  width: 20vw;
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: aliceblue;
+}
+#contant{
+  width: 80vw;
+  min-height: 100vh;
+  height: auto;
+}
+
 #todo-listing {
   input[type="text"] {
     background: none;
@@ -20,6 +38,7 @@
     }
   }
 }
+
 #detail-container {
   ul {
     input[type="text"] {

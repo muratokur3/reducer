@@ -39,5 +39,25 @@
       "completed": false
     },
     { "id": 9, "todoId": 3, "text": "GitHub'a Commitle", "completed": false }
-  ]
+  ],
+  "folders":[
+    {
+    "id":0,
+    "name":"Working",
+    "creatingDate":"",
+    "isDeleted":false
+  },
+  {
+    "id":0,
+    "name":"MaySelf",
+    "creatingDate":"",
+    "isDeleted":false
+  },
+  {
+    "id":0,
+    "name":"React",
+    "creatingDate":"",
+    "isDeleted":false
+  }
+]
 }
